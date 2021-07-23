@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import ReactQuill, { Quill } from 'react-quill';
 import hljs from 'highlight.js'
 import styles from './Editor.scss';
+import Logo from "../components/Logo";
 import 'react-quill/dist/quill.core.css'
 import 'react-quill/dist/quill.snow.css'
 import 'highlight.js/styles/github-dark.css'
@@ -34,9 +35,9 @@ const modules = {
   cursors: {
     autoRegisterListener: false,
   },
-  // syntax: {
-  //   highlight: text => hljs.highlightAuto(text).value,
-  // },  
+  syntax: {
+    highlight: text => hljs.highlightAuto(text).value,
+ },  
   history: {
     userOnly: true,
   },
@@ -196,7 +197,7 @@ class Editor extends React.Component {
   render() {
     return (
       <div className={cx('editor-main')}>
-        <input type='button' value='연결' onClick={this.editorHandle} />
+        <Logo height='150px' width='100%'/>
         <ReactQuill
           ref={(el) => {this.reactQuillRef = el; }}
           theme='snow'
