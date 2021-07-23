@@ -41,7 +41,7 @@ const modules = {
   history: {
     userOnly: true,
   },
-  toolbar: false,
+  toolbar: [['code-block']],
   
   clipboard: { matchVisual: false },
 };
