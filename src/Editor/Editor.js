@@ -30,7 +30,6 @@ const shareDBConnection = new ShareDB.Connection(shareDBSocket);
 
 const cx = classNames.bind(styles);
 
-<<<<<<< HEAD
 // const Editor = () => {
 //   return (
 //     <div className={cx('editor-main')}>
