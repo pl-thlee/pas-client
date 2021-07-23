@@ -1,1 +1,1 @@
-export {default} from './Cursors';
+export { default } from './Cursors';

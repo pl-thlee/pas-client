@@ -30,6 +30,7 @@ const shareDBConnection = new ShareDB.Connection(shareDBSocket);
 
 const cx = classNames.bind(styles);
 
+<<<<<<< HEAD
 // const Editor = () => {
 //   return (
 //     <div className={cx('editor-main')}>
@@ -133,7 +134,6 @@ class Editor extends React.Component {
         cursors.update();
       }
 
-      //
       function debounce(func, wait, immediate) {
         var timeout;
         return function () {
