@@ -6,7 +6,6 @@ import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
 import 'highlight.js/styles/github-dark.css';
 
-
 import classNames from 'classnames/bind';
 
 import styles from './Editor.scss';
@@ -30,6 +29,50 @@ const shareDBConnection = new ShareDB.Connection(shareDBSocket);
 
 const cx = classNames.bind(styles);
 
+// class LineNumber {
+// 	constructor(quill, options) {
+// 		this.quill = quill;
+// 		this.options = options;
+// 		this.container = document.querySelector(options.container);
+// 		quill.on('text-change', this.update.bind(this));
+// 		this.update(); // Account for initial contents
+// 	}
+
+// 	update() {
+// 		// Clear old nodes
+// 		while (this.container.firstChild) {
+// 			this.container.removeChild(this.container.firstChild);
+// 		}
+
+//     const lines = this.quill.getLines();
+
+// 		// Add new nodes
+// 		for (let i = 1; i < lines.length +1; i++) {
+// 			const height = lines[i - 1].domNode.offsetHeight;
+
+// 			const node = document.createElement('div');
+
+//       // showcase - empty lines
+//       if(lines[i - 1].domNode.innerHTML == '<br>')
+//       node.style.color = 'red';
+
+//       node.style.lineHeight = `${height}px`;
+// 			node.innerHTML = i;
+// 			this.container.appendChild(node);
+// 		}
+// 	}
+// }
+
+Quill.register('modules/lineNumber', LineNumber, true);
+
+// quill.setContents([
+//   { insert: 'Header 1' },
+//   { attributes: { align: 'center', header: 1 }, insert: '\n' },
+//   { insert: 'some text\nsome other Text\n\nHeader 2' },
+//   { attributes: { align: 'center', header: 1 }, insert: '\n' },
+//   { insert: '\nsome text\nsome other Text\n' }
+// ]);
+
 // const Editor = () => {
 //   return (
 //     <div className={cx('editor-main')}>
@@ -47,7 +90,7 @@ const cx = classNames.bind(styles);
 
 hljs.configure({
   languages: ['javascript', 'ruby', 'python', 'rust'],
-})
+});
 
 class Editor extends React.Component {
   constructor(props) {
@@ -56,13 +99,13 @@ class Editor extends React.Component {
     this.state = {
       text: `<code><pre>fn hello() -> Option<u32> {
         Some(1)
-      }</pre></code>`
+      }</pre></code>`,
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(value) {
-    this.setState({ text: value })
+    this.setState({ text: value });
   }
 
   componentDidMount() {
@@ -225,7 +268,7 @@ class Editor extends React.Component {
   render() {
     return (
       <div className={cx('editor-main')}>
-        <input type='button' value='연결' onClick={this.editorHandle}/>
+        <input type="button" value="연결" onClick={this.editorHandle} />
         <ReactQuill
           value={this.state.text}
           onChange={this.handleChange}
@@ -235,7 +278,9 @@ class Editor extends React.Component {
           theme="bubble"
           modules={modules}
           bounds=".editor-main"
+          // preserveWhitespace={true}
         />
+        {/* <div className={cx('line-number')}></div> */}
       </div>
     );
   }
@@ -243,7 +288,7 @@ class Editor extends React.Component {
 
 const modules = {
   syntax: {
-    highlight: text => hljs.highlightAuto(text).value,
+    highlight: (text) => hljs.highlightAuto(text).value,
   },
   cursors: {
     autoRegisterListener: false,
@@ -253,6 +298,9 @@ const modules = {
   //   userOnly: true,
   // },
   clipboard: { matchVisual: false },
+  // lineNumber: {
+  //   container: '.line-number'
+  // }
 };
 
 export default Editor;
