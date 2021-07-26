@@ -9,7 +9,7 @@
     "highlight.js": "^11.1.0",
     "node-sass": "^4.14.1",
     "npm": "^7.19.0",
-    "quill-cursors": "^1.0.1",
+    "quill-cursors": "^3.1.0",
     "rangefix": "^0.2.9",
     "react": "^16.14.0",
     "react-dom": "^16.8.6",

@@ -63,7 +63,7 @@ const cx = classNames.bind(styles);
 // 	}
 // }
 
-Quill.register('modules/lineNumber', LineNumber, true);
+// Quill.register('modules/lineNumber', LineNumber, true);
 
 // quill.setContents([
 //   { insert: 'Header 1' },
