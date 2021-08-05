@@ -2,7 +2,7 @@ import React from "react";
 
 const Logo = props => (
   <a
-    href="http://neoespa.pusan.ac.kr/"
+    href="https://github.com/rajinwonderland/react-code-blocks"
     target="_blank"
     rel="noopener noreferrer"
   >

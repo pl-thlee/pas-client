@@ -1,6 +1,9 @@
 import rangeFix from 'rangefix';
+// rangefix : 
 import tinycolor from 'tinycolor2';
 import './Cursors.scss';
+
+// 커서 모양의 디폴트 scss 파일에 가보면 모양들 커스텀 확인 할 수 있음.
 var DEFAULTS = {
   template: [
     '<span class="ql-cursor-selections"></span>',
@@ -17,6 +20,7 @@ var DEFAULTS = {
   hideSpeed: 400
 };
 
+//
 function QuillCursors(quill, options) {
   this.quill = quill;
   this._initOptions(options);

@@ -196,16 +196,17 @@ class Editor extends React.Component {
 
   render() {
     return (
-      <div className={cx('editor-main')}>
+      <div>
         <Logo height='150px' width='100%'/>
+      <div className={cx('editor-main')}>
         <ReactQuill
           ref={(el) => {this.reactQuillRef = el; }}
           theme='snow'
           modules={modules}
           bounds='.editor-main'    
         />
-
       </div>
+    </div>
     );
   }
 }
