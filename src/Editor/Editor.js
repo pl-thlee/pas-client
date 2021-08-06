@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import ReactQuill, { Quill } from 'react-quill';
 import hljs from 'highlight.js'
 import styles from './Editor.scss';
-import Logo from "../components/Logo";
+
 import 'react-quill/dist/quill.core.css'
 import 'react-quill/dist/quill.snow.css'
 import 'highlight.js/styles/github-dark.css'
@@ -46,7 +46,7 @@ const modules = {
   clipboard: { matchVisual: false },
 };
 
-//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------
 
 class Editor extends React.Component {
   constructor(props) {
@@ -196,8 +196,6 @@ class Editor extends React.Component {
 
   render() {
     return (
-      <div>
-        <Logo height='150px' width='100%'/>
       <div className={cx('editor-main')}>
         <ReactQuill
           ref={(el) => {this.reactQuillRef = el; }}
@@ -206,7 +204,6 @@ class Editor extends React.Component {
           bounds='.editor-main'    
         />
       </div>
-    </div>
     );
   }
 }

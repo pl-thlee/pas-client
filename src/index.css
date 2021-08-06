@@ -1,0 +1,7 @@
+.mainBody {
+    flex-direction: row;
+}
+
+.chatBody {
+    background-color: aquamarine;
+}
