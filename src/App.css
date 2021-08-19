@@ -1,0 +1,33 @@
+.app {
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15%;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.login {
+    padding-top: 20px;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+}
+
+._logo {
+    text-align: center;
+
+}
+
+.editor_box {
+    width: 60%;
+}
