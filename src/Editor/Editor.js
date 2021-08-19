@@ -15,7 +15,7 @@ import ReconnectingWebSocket from 'reconnectingwebsocket';
 //----------------------------------------------------------------------------------
 
 hljs.configure({
-  languages: ['javascript', 'ruby', 'python', 'rust'],
+  languages: ['javascript', 'ruby', 'python', 'rust', 'C', 'C++', 'java'],
 })
 
 const cursors = require('./cursors');

@@ -17,3 +17,17 @@
 .login {
     padding-top: 20px;
 }
+
+.btn {
+    background-color: transparent;
+    border: none;
+}
+
+._logo {
+    text-align: center;
+
+}
+
+.editor_box {
+    width: 60%;
+}
