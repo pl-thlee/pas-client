@@ -14,10 +14,20 @@
     "typescript": "^4.3.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/node": "^16.7.1",
+    "@types/webpack": "^5.28.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.1",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.51.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

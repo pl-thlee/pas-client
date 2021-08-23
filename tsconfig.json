@@ -7,9 +7,9 @@
     "moduleResolution": "Node",
     "removeComments": true,
     "resolveJsonModule": true,
-    "target": "ES5",
     "sourceMap": true,
     "strict": true,
+    "target": "ES5",
     "baseUrl": ".",
     "paths": {
       "@components/*": ["components/*"],
