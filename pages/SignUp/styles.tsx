@@ -112,7 +112,6 @@ export const LinkContainer = styled.p`
   & a {
     color: #1264a3;
     text-decoration: none;
-    font-weight: bold;
     &:hover {
       text-decoration: underline;
     }
