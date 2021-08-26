@@ -16,6 +16,7 @@ import useInputs from '@hooks/useInputs';
 import axios, { AxiosResponse } from 'axios';
 
 const SignUp = () => {
+  // ANCHOR 8.7
   const [state, onChange] = useInputs({
     userid: '',
     sid: '',
@@ -33,10 +34,14 @@ const SignUp = () => {
       e.preventDefault();
       axios
         .post('/api/users', { userId, studentId, password, email, name, phone })
+
+        // 요청이 성공했을 때
         .then((response: AxiosResponse<any> | void) => {
-          // console.log('[onSubmit]', response);
+          console.log('[onSubmit]', response);
           history.push('/login');
         })
+
+        // 요청이 실패했을 때
         .catch((error) => {
           console.log(error.response);
         });

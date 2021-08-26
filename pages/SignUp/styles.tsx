@@ -1,3 +1,4 @@
+// ANCHOR 9.4
 import styled from '@emotion/styled';
 
 export const SignUpContainer = styled.div`
