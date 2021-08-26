@@ -2,12 +2,12 @@ import React, { SyntheticEvent, useCallback, useState } from 'react';
 import {
   Button,
   Form,
-  Header,
   Input,
   Label,
   LabelWrapper,
   LinkContainer,
   SignUpContainer,
+  SignUpHeader,
   SignUpWrapper,
   SplashWrapper,
 } from '@pages/SignUp/styles';
@@ -51,7 +51,7 @@ const SignUp = () => {
       </SplashWrapper>
 
       <SignUpWrapper>
-        <Header>회원가입을 진행하세요.</Header>
+        <SignUpHeader>회원가입을 진행하세요.</SignUpHeader>
 
         <Form onSubmit={onSubmit}>
           <LabelWrapper>
