@@ -1,13 +1,30 @@
 import React, { SyntheticEvent, useCallback, useState } from 'react';
 import { Button, Form, Input, Label, LinkContainer } from '@pages/SignUp/styles';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import useInputs from '@hooks/useInputs';
 import { LoginContainer, LoginWrapper } from './styles';
 import axios, { AxiosError, AxiosResponse } from 'axios';
+import { useMutation } from 'react-query';
 
 const LogIn = () => {
   const [state, onChange] = useInputs({ userid: '', password: '' });
   const { userid: userId, password } = state;
+
+  const loginUser = async () => {
+    const { data: response } = await axios.post('/api/auth/login', { userId, password });
+    return response.data;
+  };
+  const mutation = useMutation(loginUser, {
+    onMutate: (accessToken: string) => {
+      if (accessToken) {
+        localStorage.setItem('user', JSON.stringify(accessToken));
+      }
+
+      // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
+      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+    },
+  });
+
   const [logInError, setLogInError] = useState(false);
 
   const onSubmit = useCallback(
@@ -15,12 +32,10 @@ const LogIn = () => {
       e.preventDefault();
 
       axios
-        .post('/api/auth/login', { userId, password }, { withCredentials: true })
+        .post('/api/auth/login', { userId, password })
         .then((response: AxiosResponse) => {
           const { accessToken } = response.data;
-
-          // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-          axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+          mutation.mutate(accessToken);
         })
         .catch((error: AxiosError) => {
           setLogInError(error.response?.data?.statusCode === 401);
@@ -28,6 +43,18 @@ const LogIn = () => {
     },
     [userId, password],
   );
+
+  // const onLogout = useCallback(() => {
+  //   localStorage.removeItem('user');
+  // }, []);
+
+  // const getCurrentUser = () => {
+  //   return JSON.parse(localStorage.getItem('user')!);
+  // };
+
+  if (mutation.isSuccess) {
+    return <Redirect to="/playgrounds/" />;
+  }
 
   return (
     <LoginContainer>

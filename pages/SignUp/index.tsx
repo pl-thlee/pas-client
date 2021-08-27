@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useCallback, useState } from 'react';
+import React, { SyntheticEvent, useCallback } from 'react';
 import {
   Button,
   Form,
@@ -32,7 +32,7 @@ const SignUp = () => {
     (e: SyntheticEvent) => {
       e.preventDefault();
       axios
-        .post('/api/users', { userId, studentId, password, email, name, phone })
+        .post('/api/auth/signup', { userId, studentId, password, email, name, phone })
         .then((response: AxiosResponse<any> | void) => {
           // console.log('[onSubmit]', response);
           history.push('/login');

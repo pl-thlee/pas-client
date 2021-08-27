@@ -1,4 +1,3 @@
-import PlayGround from '@layouts/Playground';
 import loadable from '@loadable/component';
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
