@@ -1,7 +1,25 @@
+import Chat from '@components/Chat';
+import Editor from '@components/Editor';
+import Header from '@components/Header';
+import Nav from '@components/Snb';
 import React from 'react';
+import { Redirect } from 'react-router';
 
 const Playground = () => {
-  return <div>Playground</div>;
+  if (!localStorage.getItem('user')) {
+    return <Redirect to="/login" />;
+  }
+
+  return (
+    <>
+      <Header />
+      <div style={{ display: 'flex' }}>
+        <Nav />
+        <Editor />
+        <Chat />
+      </div>
+    </>
+  );
 };
 
 export default Playground;
