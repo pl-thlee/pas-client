@@ -1,7 +1,8 @@
+import { default as languageMapper } from '@libs/languageMapper';
 import { EditorConfiguration } from 'codemirror';
 
 export const editorConfig: EditorConfiguration = {
-  mode: 'text/typescript-jsx',
+  mode: languageMapper('tsx'),
   theme: 'darcula',
   smartIndent: true,
   tabSize: 4,

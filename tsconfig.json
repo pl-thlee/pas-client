@@ -15,7 +15,8 @@
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
       "@layouts/*": ["layouts/*"],
-      "@pages/*": ["pages/*"]
+      "@pages/*": ["pages/*"],
+      "@libs/*": ["libs/*"],
     }
   }
 }
