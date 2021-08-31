@@ -6,6 +6,7 @@ export const HeaderWrapper: StyledComponent<{}> = styled.header`
   width: 100%;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
   border-bottom: 1px rgb(68, 76, 86) solid;
+  z-index: 628;
 `;
 
 export const Wrapper = styled(Responsive)`

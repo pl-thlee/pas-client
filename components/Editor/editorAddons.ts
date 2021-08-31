@@ -4,6 +4,7 @@ import 'codemirror/lib/codemirror.css';
  * @see https://codemirror.net/demo/theme.html
  */
 import 'codemirror/theme/darcula.css';
+import 'codemirror/theme/elegant.css';
 
 /**
  * @see https://stackoverflow.com/questions/53469681/how-to-configure-codemirror-for-c-like-language

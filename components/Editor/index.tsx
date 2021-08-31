@@ -14,7 +14,7 @@ const Editor = () => {
   if (editor) {
     // setEditor(undefined);
     // editor.refresh();
-    editor.setSize('70vw', '100%');
+    editor.setSize('70vw', 'calc(100vh - 4rem)');
   }
 
   const [code, setCode] = useState('');

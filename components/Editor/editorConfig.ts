@@ -26,5 +26,5 @@ export const editorConfig: EditorConfiguration = {
     nonEmpty: true,
   },
   continueComments: true,
-  placeholder: '이곳에 소스 코드를 작성하세요',
+  placeholder: 'Source code goes here!',
 };
