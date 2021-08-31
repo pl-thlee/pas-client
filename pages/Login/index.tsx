@@ -52,7 +52,7 @@ const LogIn = () => {
   //   return JSON.parse(localStorage.getItem('user')!);
   // };
 
-  if (mutation.isSuccess) {
+  if (mutation.isSuccess || localStorage.getItem('user')) {
     return <Redirect to="/playgrounds/" />;
   }
 
