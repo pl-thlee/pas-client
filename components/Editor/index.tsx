@@ -1,51 +1,61 @@
-import React, { useState } from 'react';
-import { Controlled as CodeMirror } from 'react-codemirror2';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/darcula.css';
-
-import 'codemirror/mode/javascript/javascript';
-import 'codemirror/mode/clike/clike';
-import 'codemirror/mode/python/python';
-
-// import 'codemirror/addon/display/fullscreen';
-import 'codemirror/addon/edit/closebrackets';
-// import 'codemirror/addon/edit/matchbrackets';
-// import 'codemirror/addon/fold/foldcode';
-import 'codemirror/addon/search/match-highlighter';
-// import 'codemirror/addon/search/search';
-import 'codemirror/addon/selection/active-line';
-
+import React, { useEffect, useState } from 'react';
+import { UnControlled as CodeMirror } from 'react-codemirror2';
 import { editorConfig } from './editorConfig';
+import * as Y from 'yjs';
+import { WebrtcProvider } from 'y-webrtc';
+import { CodemirrorBinding } from 'y-codemirror';
+import './editorAddons';
+import './remote-caret.css';
+import randomColor from 'randomcolor';
 
 const Editor = () => {
-  // const [doc, setDoc] = useState<CodeMirror.Doc>();
-
+  const [doc, setDoc] = useState<CodeMirror.Doc>();
   const [editor, setEditor] = useState<CodeMirror.Editor>();
   if (editor) {
-    editor.refresh();
     // setEditor(undefined);
+    // editor.refresh();
     editor.setSize('70vw', '100%');
   }
 
-  const [value, setValue] = useState(`"""
-"""
+  const [code, setCode] = useState('');
+  // const codemirrorRef = useRef(doc?.getEditor());
 
+  useEffect(() => {
+    if (editor) {
+      // Create a Yjs document that holds shared data
+      const ydoc = new Y.Doc();
 
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
+      let provider: WebrtcProvider | null = null;
+      try {
+        // Syncs the ydoc throught WebRTC connection
+        provider = new WebrtcProvider('pas-room', ydoc);
 
-    import python_ta
-    python_ta.check_all()
-`);
+        // Define a shared text type on the document
+        const yText = ydoc.getText('codemirror');
 
-  // const codemirrorRef = useRef<CodeMirror.EditorFromTextArea>();
+        // UndoManager used for stacking the undo and redo operation for yjs
+        const yUndoManager = new Y.UndoManager(yText);
+        const awareness = provider.awareness;
+        const color = randomColor();
 
-  // useEffect(() => {
-  //   // setValue('');
-  //   // const current = codemirrorRef.current.editor.display.wrapper.style.width = "inherit";
-  //   // codemirrorRef.current?.getWrapperElement.style
-  // }, [value]);
+        awareness.setLocalStateField('user', {
+          name: '이도훈',
+          color: color,
+        });
+
+        new CodemirrorBinding(yText, editor, awareness, { yUndoManager });
+      } catch (err) {
+        console.error(err);
+      }
+      return () => {
+        // Releasing the resources used and destroying the document
+        if (provider) {
+          provider.disconnect();
+          ydoc.destroy();
+        }
+      };
+    }
+  }, [editor]);
 
   return (
     <div
@@ -59,17 +69,16 @@ if __name__ == '__main__':
       }}
     >
       <CodeMirror
+        // value={code}
+        options={editorConfig}
         editorDidMount={(editor) => {
           setEditor(editor);
         }}
-        value={value}
-        options={editorConfig}
-        onBeforeChange={(editor, data, value) => {
-          setValue(value);
+        onChange={(editor, data, Code) => {
+          setCode(code);
         }}
-        onChange={(editor, data, value) => {
-          setValue(value);
-        }}
+        autoScroll
+        // ref={(c: any) => setEditorRef(c)}
       />
     </div>
   );
