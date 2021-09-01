@@ -47,7 +47,7 @@ const SignUp = () => {
   return (
     <SignUpContainer>
       <SplashWrapper>
-        <img src="assets/logo.png" alt="splashimage" />
+        <img src="/assets/logo.png" alt="splashimage" />
       </SplashWrapper>
 
       <SignUpWrapper>

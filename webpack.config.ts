@@ -22,6 +22,7 @@ const config: Configuration = {
       '@components': path.resolve(__dirname, 'components'),
       '@layouts': path.resolve(__dirname, 'layouts'),
       '@pages': path.resolve(__dirname, 'pages'),
+      '@libs': path.resolve(__dirname, 'libs'),
     },
   },
   entry: {

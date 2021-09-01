@@ -6,12 +6,11 @@ const Chat = () => {
       style={{
         display: 'flex',
         flex: '0.3',
-        background: 'lightblue',
-        marginTop: '0.3rem',
-        height: 'calc(100vh - 5rem)',
+        background: 'lightgray',
+        height: 'calc(100vh - 4rem)',
       }}
     >
-      Chat
+      <img src="../assets/temp.png" style={{ width: '100%', height: 'calc(100vh - 4rem)' }} />
     </div>
   );
 };
