@@ -10,7 +10,10 @@ const Chat = () => {
         height: 'calc(100vh - 4rem)',
       }}
     >
-      <img src="../assets/temp.png" style={{ width: '100%', height: 'calc(100vh - 4rem)' }} />
+      <img
+        src="https://via.placeholder.com/194.png?text=Chat%20component"
+        style={{ width: '100%', height: 'calc(100vh - 4rem)' }}
+      />
     </div>
   );
 };
