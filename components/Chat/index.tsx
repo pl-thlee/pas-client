@@ -1,19 +1,21 @@
 import React from 'react';
+import ChatFeed from './ChatFeed';
+import ChatHeader from './ChatHeader';
+import ChatInputForm from './ChatInput';
 
 const Chat = () => {
   return (
     <div
       style={{
         display: 'flex',
-        flex: '0.3',
-        background: 'lightgray',
+        flexDirection: 'column',
+        flex: '1',
         height: 'calc(100vh - 4rem)',
       }}
     >
-      <img
-        src="https://via.placeholder.com/194.png?text=Chat%20component"
-        style={{ width: '100%', height: 'calc(100vh - 4rem)' }}
-      />
+      <ChatHeader />
+      <ChatFeed />
+      <ChatInputForm />
     </div>
   );
 };
