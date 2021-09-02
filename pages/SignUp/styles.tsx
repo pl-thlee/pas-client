@@ -26,7 +26,7 @@ export const SignUpWrapper = styled.div`
   height: 100vh;
 `;
 
-export const SignUpHeader = styled.header`
+export const Header = styled.header`
   font-family: sans-serif;
   font-size: 1.25rem;
   font-weight: bold;

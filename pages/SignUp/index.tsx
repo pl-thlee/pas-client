@@ -1,13 +1,13 @@
-import React, { SyntheticEvent, useCallback } from 'react';
+import React, { SyntheticEvent, useCallback, useState } from 'react';
 import {
   Button,
   Form,
+  Header,
   Input,
   Label,
   LabelWrapper,
   LinkContainer,
   SignUpContainer,
-  SignUpHeader,
   SignUpWrapper,
   SplashWrapper,
 } from '@pages/SignUp/styles';
@@ -32,7 +32,7 @@ const SignUp = () => {
     (e: SyntheticEvent) => {
       e.preventDefault();
       axios
-        .post('/api/auth/signup', { userId, studentId, password, email, name, phone })
+        .post('/api/users', { userId, studentId, password, email, name, phone })
         .then((response: AxiosResponse<any> | void) => {
           // console.log('[onSubmit]', response);
           history.push('/login');
@@ -47,11 +47,11 @@ const SignUp = () => {
   return (
     <SignUpContainer>
       <SplashWrapper>
-        <img src="/assets/logo.png" alt="splashimage" />
+        <img src="assets/logo.png" alt="splashimage" />
       </SplashWrapper>
 
       <SignUpWrapper>
-        <SignUpHeader>회원가입을 진행하세요.</SignUpHeader>
+        <Header>회원가입을 진행하세요.</Header>
 
         <Form onSubmit={onSubmit}>
           <LabelWrapper>
