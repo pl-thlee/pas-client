@@ -24,6 +24,8 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
+  background: {
+    color: '#292F36'},
 });
 
 type Anchor = 'left';
@@ -54,12 +56,13 @@ const Snb = () => {
       // className={clsx(classes.list, {
       //   [classes.fullList]: anchor === 'top' || anchor === 'bottom',
       // })}
+      style={{background: '#292F36'}}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['Profile', 'Lecture', 'Dashboard', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <DiCodeBadge /> : <FiUpload />}</ListItemIcon>
             <ListItemText primary={text} />
@@ -68,7 +71,7 @@ const Snb = () => {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['File', 'Setting', 'Logout'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <FaUnlock /> : <AiOutlineSetting />}</ListItemIcon>
             <ListItemText primary={text} />

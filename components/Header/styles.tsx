@@ -18,7 +18,7 @@ export const Wrapper = styled(Responsive)`
 
   .logo {
     font-size: 1.125rem;
-    font-color: #F7FFF7;
+    color: #F7FFF7;
     font-weight: 800;
     letter-spacing: 2px;
   }

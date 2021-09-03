@@ -4,7 +4,9 @@ import { GrEmoji } from 'react-icons/gr';
 import { IconContext } from 'react-icons/lib';
 import { ChatArea, ChatToolbar, MessageBox, SendButton } from './styles';
 
-const ChatInput = () => {
+import io from 'socket.io-client';
+
+const ChatInput = ( ) => {
   return (
     <MessageBox>
       <ChatArea placeholder="메시지를 입력하세요" />
