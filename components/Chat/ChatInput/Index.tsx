@@ -4,8 +4,6 @@ import { GrEmoji } from 'react-icons/gr';
 import { IconContext } from 'react-icons/lib';
 import { ChatArea, ChatToolbar, MessageBox, SendButton } from './styles';
 
-import io from 'socket.io-client';
-
 const ChatInput = ( ) => {
   return (
     <MessageBox>

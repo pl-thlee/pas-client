@@ -13,7 +13,7 @@ const App = () => {
       <Route path="/login" component={LogIn} />
       <Route path="/signup" component={SignUp} />
       <Route path="/playgrounds" component={Playground} />
-      <Route path="/playgrounds/:playground" component={Playground} />
+      <Route path="/playgrounds/:roomID" component={Playground} />
     </Switch>
   );
 };
