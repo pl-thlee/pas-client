@@ -16,7 +16,7 @@ const Playground = () => {
       <div style={{ display: 'flex' }}>
         <Nav />
         <Editor />
-        <Chat {...props}/>
+        <Chat />
       </div>
     </>
   );
