@@ -1,14 +1,14 @@
-import Chat from '@components/Chat';
+import Url from '@components/Url';
 import Editor from '@components/Editor';
 import Header from '@components/Header';
 import Nav from '@components/Snb';
 import React from 'react';
 import { Redirect } from 'react-router';
 
-const Playground = () => {
-  // if (!localStorage.getItem('user')) {
-  //   return <Redirect to="/login" />;
-  // }
+const PlaygroundUrl = () => {
+//   if (!localStorage.getItem('user')) {
+//     return <Redirect to="/login" />;
+//   }
 
   return (
     <>
@@ -16,10 +16,10 @@ const Playground = () => {
       <div style={{ display: 'flex' }}>
         <Nav />
         <Editor />
-        <Chat {...props}/>
+        <Url />
       </div>
     </>
   );
 };
 
-export default Playground;
+export default PlaygroundUrl;

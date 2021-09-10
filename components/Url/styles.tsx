@@ -6,7 +6,7 @@ export const textInputField = styled.div`
     font-size: 24px;
 `;
 
-export const enterRoomButton = styled.div`
+export const enterRoomBtn = styled.div`
     margin-top: 20px;
     padding: 24px 12px;
     font-size: 28px;
