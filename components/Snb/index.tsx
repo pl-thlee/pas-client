@@ -1,136 +1,92 @@
-import React from 'react';
-//sidebar
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-//icon
+import React, { useState } from "react";
+//동작용
+import { Link, NavLink } from "react-router-dom";
+import { Side, Profile, Menu } from './styles';
 import { AiOutlineSetting } from 'react-icons/ai';
-import { DiCodeBadge } from 'react-icons/di';
-import { FaLock, FaUnlock } from 'react-icons/fa';
-import { FiUpload } from 'react-icons/fi';
-import { GiExitDoor } from 'react-icons/gi';
-import { IconContext } from 'react-icons/lib';
-
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: 'auto',
-  },
-  background: {
-    color: '#292F36'},
-});
-
-type Anchor = 'left';
+//import SidebarItem from "./SidebarItem";
+//icons
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from "@material-ui/core/ListItemText";
 
 const Snb = () => {
-  const classes = useStyles();
-  const [state, setState] = React.useState({
-    left: false,
-  });
+  const menus = [
+    { title: 'Home', path: '/'
+      // icon: <AiOutlineSetting/>,
+    },
+    { title: 'Setting', path: '/'
+    // icon: <AiOutlineSetting/>,
 
-  const toggleDrawer = (anchor: Anchor, open: boolean) => (
-    event: React.KeyboardEvent | React.MouseEvent,
-  ) => {
-    if (
-      event &&
-      event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' ||
-        (event as React.KeyboardEvent).key === 'Shift')
-    ) {
-      return;
-    }
+    },
+    { title: 'File', path: '/'
+    // icon: <AiOutlineSetting/>,
+  },
+  ];
+//사이드바 이벤트 처리
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar); 
 
-    setState({ ...state, [anchor]: open });
-  };
-
-  const list = (anchor: Anchor) => (
-    <div
-      // className={clsx(classes.list, {
-      //   [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      // })}
-      style={{background: '#292F36'}}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {['Profile', 'Lecture', 'Dashboard', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <DiCodeBadge /> : <FiUpload />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+  return(
+    <Side>
+      <List disablePadding dense>
+        <ListItem button>
+          <ListItemText>Home</ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemText>Setting</ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemText>File</ListItemText>
+        </ListItem>
       </List>
-      <Divider />
-      <List>
-        {['File', 'Setting', 'Logout'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <FaUnlock /> : <AiOutlineSetting />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
 
-  return (
-    <div>
-      {(['left' ] as Anchor[]).map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-          <SwipeableDrawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-            onOpen={toggleDrawer(anchor, true)}
-          >
-            {list(anchor)}
-          </SwipeableDrawer>
-        </React.Fragment>
-      ))}
-    </div>
-
-    // <IconContext.Provider value={{ size: '2rem', color: 'white' /* attr: { display: 'block' } */ }}>
-    //   <div
-    //     style={{
-    //       background: 'rgb(30, 34, 40)',
-    //       width: '4rem',
-    //       borderRight: '1px rgb(68, 76, 86) solid',
-    //       textAlign: 'center',
-    //       padding: '0.5rem',
-    //       height: 'calc(100vh - 4rem)',
-
-    //     }}
-    //   >
-    //     {/* <div style={{ width: '4rem', borderRight: '1px rgb(68, 76, 86) solid' }}> */}
-    //     <div style={{ margin: '1rem 0' }}>
-    //       <DiCodeBadge />
-    //     </div>
-    //     <div style={{ margin: '1rem 0' }}>
-    //       <FiUpload />
-    //     </div>
-    //     <div style={{ margin: '1rem 0' }}>
-    //       <FaUnlock />
-    //     </div>
-    //     <div style={{ margin: '1rem 0' }}>
-    //       <FaLock />
-    //     </div>
-    //     <div style={{ margin: '1rem 0' }}>
-    //       <AiOutlineSetting />
-    //     </div>
-    //     <div style={{ margin: '1rem 0' }}>
-    //       <GiExitDoor />
-    //     </div>
-    //   </div>
-    // </IconContext.Provider>
+      {/* //프로필 모양 나타내고싶음 */}
+      {/* <Profile>
+        <img src = "assets/proflile.png"></img>
+      </Profile> */}
+      {/* // 메뉴 리스트 클릭시 회색만들고싶음 */}
+       {/* <Menu>
+        {menus.map((menu, index) => {
+          return (
+            <NavLink
+              exact
+              style={{color: "gray", textDecoration: "none"}}
+              to={menu.path}
+              key={index}
+              activeStyle={{color: "black"}}
+            >
+              <SidebarItem
+                menu={menu}
+              />
+              <div className = "item"> HOME </div>
+            </NavLink>
+          );
+        })}
+      </Menu> */}
+      {/* // 메뉴 선택시 주소창이 바뀜. 렌더링으로 쓰고싶어서 보류 */}
+      {/* <Link to = '#'>
+        <FaIcons.FaBars onClick={showSidebar} />
+      </Link>
+      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-items' onClick={showSidebar}>
+            <li className='navbar-toggle'>
+              <Link to='#' className='menu-bars'>
+                <AiIcons.AiOutlineClose />
+              </Link>
+            </li>
+            {menus.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav> */}
+    </Side>
   );
 };
 
