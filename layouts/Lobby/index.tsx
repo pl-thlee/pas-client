@@ -6,6 +6,7 @@ import React from 'react';
 import { Redirect } from 'react-router';
 
 const PlaygroundUrl = () => {
+// JWT 토큰이 있는지 확인하고
 //   if (!localStorage.getItem('user')) {
 //     return <Redirect to="/login" />;
 //   }
@@ -13,9 +14,9 @@ const PlaygroundUrl = () => {
   return (
     <>
       <Header />
-      <div style={{ display: 'flex' }}>
-        <Nav />
-        <Editor />
+      <div style={{ display: 'flex', background: '#292F36'}}>
+        {/* <Nav />
+        <Editor /> */}
         <Url />
       </div>
     </>

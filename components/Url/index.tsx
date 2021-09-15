@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ChatHeader from '@components/Chat/ChatHeader/Index';
-import { textInputField, enterRoomBtn } from './styles';
+import { TextInputField, EnterRoomBtn, Text, Wrap } from './styles';
+import { colors } from '@material-ui/core';
 
 const Url = () => {
   const [roomID, setRoomID] = useState("");
@@ -19,16 +20,22 @@ const Url = () => {
         height: 'calc(100vh - 4rem)',
       }}
     >
-      <ChatHeader />
-      <input
-        type="text"
-        placeholder="Room"
-        value={roomID}
-        onChange={handleRoomNameChange} />
+      <Wrap>
+      <EnterRoomBtn>
+        <input
+          type="text"
+          placeholder="Room"
+          value={roomID}
+          onChange={handleRoomNameChange}/>
+      </EnterRoomBtn>
 
-      <Link to={`/${roomID}`}>
-        Join room
-      </Link>
+      {/* <JoinRoom to={'/${roomID}'}>Join Room</JoinRoom> */}
+      <TextInputField>
+        <Link to={`/${roomID}`}>
+          <Text>Join room</Text>
+        </Link>
+      </TextInputField>
+      </Wrap>
 
     </div>
   );
