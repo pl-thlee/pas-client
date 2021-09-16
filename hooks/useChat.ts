@@ -37,7 +37,8 @@ const useChat = (roomID:any) => {
   const sendMessage = (messageBody:any) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
-      senderId: socketRef.current.id,
+      // senderId: socketRef.current.id,
+      // 함부로 가져온 거 쓰지말자.. id 속성값이 없다.
     });
   };
 

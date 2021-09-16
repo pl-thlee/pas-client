@@ -1,5 +1,5 @@
 import useChat from '@hooks/useChat';
-import React, { useCallback } from 'react';
+import React, { SyntheticEvent, useCallback, useState } from 'react';
 import { BiSend } from 'react-icons/bi';
 import { GrEmoji } from 'react-icons/gr';
 import { IconContext } from 'react-icons/lib';
@@ -11,33 +11,30 @@ interface MatchParams{
 
 const ChatInput = ( ) => {
   const { messages, sendMessage } = useChat(roomID);
-  const [newMessage, setNewMessage] = React.useState(""); // Message to be sent
+  const [newMessage, setNewMessage] = useState(""); // Message to be sent
 
-  const handleNewMessageChange = (event:any) => {
+  const handleNewMessageChange = useCallback((event:any) => {
     setNewMessage(event.target.value);
-  };
+  },[newMessage]);
 
 
-  const handleSendMessage = (e:any) => {
+  const handleSendMessage = useCallback((e:SyntheticEvent) => {
     sendMessage(newMessage);
     setNewMessage("");
-    console.log('The link was clicked.');
-  };
+  },[newMessage]);
 
   return (
     <MessageBox>
-      <ChatArea>
-        <textarea
-          placeholder="Enter the Message"
-          value={newMessage}
-          onChange={handleNewMessageChange}>
-        </textarea>
+      <ChatArea 
+        placeholder="Enter the Message"
+        onChange={handleNewMessageChange}>
+        {newMessage}
       </ChatArea>
       <ChatToolbar>
         <IconContext.Provider value={{ size: '1.5rem', color: 'black' /* attr: { display: 'block' } */ }}>
           <GrEmoji />
             <button onClick={()=>handleSendMessage}>
-            BTN
+            <BiSend />
             </button>
         </IconContext.Provider>
       </ChatToolbar>
