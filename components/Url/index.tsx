@@ -5,7 +5,7 @@ import { TextInputField, EnterRoomBtn, Text, Wrap } from './styles';
 import { colors } from '@material-ui/core';
 
 const Url = () => {
-  const [roomID, setRoomID] = useState("");
+  const [roomName, setRoomID] = useState("");
   
   const handleRoomNameChange = (e:any) => {
     setRoomID(e.currentTarget.value);
@@ -25,13 +25,13 @@ const Url = () => {
         <input
           type="text"
           placeholder="Room"
-          value={roomID}
+          value={roomName}
           onChange={handleRoomNameChange}/>
       </EnterRoomBtn>
 
       {/* <JoinRoom to={'/${roomID}'}>Join Room</JoinRoom> */}
       <TextInputField>
-        <Link to={`/${roomID}`}>
+        <Link to={`/${roomName}`}>
           <Text>Join room</Text>
         </Link>
       </TextInputField>

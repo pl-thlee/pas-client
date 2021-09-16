@@ -6,11 +6,11 @@ import { IconContext } from 'react-icons/lib';
 import { ChatArea, ChatToolbar, MessageBox, SendButton } from './styles';
 
 interface MatchParams{
-  roomID: string;
+  roomName: string;
 }
 
 const ChatInput = ( ) => {
-  const { messages, sendMessage } = useChat(roomID);
+  const { messages, sendMessage } = useChat(roomName);
   const [newMessage, setNewMessage] = React.useState(""); // Message to be sent
 
   const handleNewMessageChange = (e:any) => {
@@ -45,6 +45,6 @@ const ChatInput = ( ) => {
 
 export default ChatInput;
 
-function roomID(roomID: any): { messages: any; sendMessage: any; } {
+function roomName(roomName: any): { messages: any; sendMessage: any; } {
   throw new Error('Function not implemented.');
 }

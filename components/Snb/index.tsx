@@ -28,6 +28,10 @@ const Snb = () => {
 
   return(
     <Side>
+      {/* //프로필 모양 나타내고싶음 */}
+      <Profile>
+        <img src = "assets/profile.png"></img>
+      </Profile>
       <List disablePadding dense>
         <ListItem button>
           <ListItemText>Home</ListItemText>
@@ -40,10 +44,6 @@ const Snb = () => {
         </ListItem>
       </List>
 
-      {/* //프로필 모양 나타내고싶음 */}
-      {/* <Profile>
-        <img src = "assets/proflile.png"></img>
-      </Profile> */}
       {/* // 메뉴 리스트 클릭시 회색만들고싶음 */}
        {/* <Menu>
         {menus.map((menu, index) => {

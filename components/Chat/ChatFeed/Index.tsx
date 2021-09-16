@@ -5,11 +5,11 @@ import { MessagesContainer,
 import useChat from '@hooks/useChat';
 
 interface MatchParams{
-  roomID: string;
+  roomName: string;
 }
 
 const ChatFeed = () => {
-  const { messages, sendMessage } = useChat(roomID); // Creates a websocket and manages messaging
+  const { messages, sendMessage } = useChat(roomName); // Creates a websocket and manages messaging
  
   return(
     <div id="#chatFeed" style={{ display: 'flex', flex: 0.8, padding: '1rem' }}>
@@ -31,6 +31,6 @@ const ChatFeed = () => {
 
 export default ChatFeed;
 
-function roomID(roomID: any): { messages: any; sendMessage: any; } {
+function roomName(roomName: any): { messages: any; sendMessage: any; } {
   throw new Error('Function not implemented.');
 }

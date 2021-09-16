@@ -5,7 +5,7 @@ import { DefaultEventsMap } from "socket.io-client/build/typed-events";
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage"; // Name of the event
 const SOCKET_SERVER_URL = "http://localhost:4000";
 
-const useChat = (roomID:any) => {
+const useChat = (roomName:any) => {
   const [messages, setMessages] = useState<string[]>([]); // Sent and received messages
   const socketRef = useRef<any | null>(null);
 
@@ -13,7 +13,7 @@ const useChat = (roomID:any) => {
     
     // Creates a WebSocket connection
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
-      query: { roomID },
+      query: { roomName },
     });
     
     // Listens for incoming messages
@@ -30,7 +30,7 @@ const useChat = (roomID:any) => {
     return () => {
       socketRef.current.disconnect();
     };
-  }, [roomID]);
+  }, [roomName]);
 
   // Sends a message to the server that
   // forwards it to all users in the same room

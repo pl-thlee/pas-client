@@ -17,9 +17,9 @@ export const Side = styled.div`
     }
 `;
 
-export const Profile = styled.img`
-    width: 150px;
-    height: 150px;
+export const Profile = styled.div`
+    width: 15px;
+    height: 15px;
     border-radius: 100%;
 `;
 
