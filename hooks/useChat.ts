@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 import { DefaultEventsMap } from "socket.io-client/build/typed-events";
 
-const NEW_CHAT_MESSAGE_EVENT = "newChatMessage"; // Name of the event
+const NEW_CHAT_MESSAGE_EVENT = "MSG"; // Name of the event
 const SOCKET_SERVER_URL = "http://localhost:4000";
 
-const useChat = (roomName:any) => {
+const useChat = (roomID:any) => {
   const [messages, setMessages] = useState<string[]>([]); // Sent and received messages
   const socketRef = useRef<any | null>(null);
 
@@ -13,7 +13,7 @@ const useChat = (roomName:any) => {
     
     // Creates a WebSocket connection
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
-      query: { roomName },
+      query: { roomID },
     });
     
     // Listens for incoming messages
@@ -30,7 +30,7 @@ const useChat = (roomName:any) => {
     return () => {
       socketRef.current.disconnect();
     };
-  }, [roomName]);
+  }, [roomID]);
 
   // Sends a message to the server that
   // forwards it to all users in the same room
