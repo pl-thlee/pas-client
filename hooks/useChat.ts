@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 import { DefaultEventsMap } from "socket.io-client/build/typed-events";
 
-const NEW_CHAT_MESSAGE_EVENT = "MSG"; // Name of the event
+const NEW_CHAT_MESSAGE_EVENT = "newChatMessage"; // Name of the event
 const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const useChat = (roomID:any) => {

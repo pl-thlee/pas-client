@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ChatHeader from '@components/Chat/ChatHeader/Index';
 import { TextInputField, EnterRoomBtn, Text, Wrap } from './styles';
@@ -6,10 +6,11 @@ import { colors } from '@material-ui/core';
 
 const Url = () => {
   const [roomID, setRoomID] = useState("");
-  
-  const handleRoomNameChange = (e:any) => {
+
+  const handleRoomNameChange = useCallback(
+    (e:any) => {
     setRoomID(e.currentTarget.value);
-  };
+  }, [roomID]);
 
   return (
     <div
