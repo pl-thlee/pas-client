@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 import { DefaultEventsMap } from "socket.io-client/build/typed-events";
 
-const NEW_CHAT_MESSAGE_EVENT = "newChatMessage"; // Name of the event
+const NEW_CHAT_MESSAGE_EVENT = "message"; // Name of the event
 const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const useChat = (roomID:string) => {
@@ -20,7 +20,7 @@ const useChat = (roomID:string) => {
     socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message:any) => {
       const incomingMessage = {
         ...message,
-        ownedByCurrentUser: message.senderId === socketRef.current.id,
+        //ownedByCurrentUser: message.senderId === socketRef.current.id,
       };
       setMessages((messages) => [...messages, incomingMessage]);
     });
@@ -34,16 +34,16 @@ const useChat = (roomID:string) => {
 
   // Sends a message to the server that
   // forwards it to all users in the same room
-  const sendMessage = (messageBody:string) => {
+  const sendMessage = (messageBody:String) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
-      senderId: socketRef.current.id,
+      //senderId: socketRef.current.id,
       // 함부로 가져온 거 쓰지말자.. id 속성값이 없다.
     });
-    body: messageBody
+    console.log("messageBody : ", messageBody);
   };
 
-  return { messages, sendMessage };
+  return {messages, sendMessage };
 };
 
 export default useChat;

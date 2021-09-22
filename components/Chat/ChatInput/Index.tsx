@@ -30,12 +30,11 @@ const ChatInput: React.SFC<RouteComponentProps<MatchParams>> = ({match}) => {
       e.preventDefault();
       setNewMessage('');
       sendMessage(newMessage);
-      console.log("newMessage", newMessage);
+      console.log("NewMessage", newMessage);
     }
-  }, []);
+  },[newMessage]);
 
   return (
-
       <MessageBox>
         <ChatArea
           placeholder="메시지를 입력하세요"

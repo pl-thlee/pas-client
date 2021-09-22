@@ -10,16 +10,15 @@ interface MatchParams {
 
 const ChatFeed: React.SFC<RouteComponentProps<MatchParams>> = ({match}) => {
   const { roomID } = match.params;
-  const { messages, sendMessage } = useChat(roomID); // Creates a websocket and manages messaging
+  const { messages } = useChat(roomID); // Creates a websocket and manages messaging
 
   return (
     <div id="#chatFeed" style={{ display: 'flex', flex: 0.8, padding: '1rem' }}>
       <MessagesContainer>
         <MessagesList>
-          {messages.map((messages, i) => (
+          {messages.map((message, i) => (
             <MessagesItem key={i}>
-              {messages}
-              {/* {{messages.body}} */}
+              {message[i]}
             </MessagesItem>
           ))}
         </MessagesList>
