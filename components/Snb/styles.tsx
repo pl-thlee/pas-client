@@ -18,9 +18,12 @@ export const Side = styled.div`
 `;
 
 export const Profile = styled.div`
-    width: 15px;
-    height: 15px;
+    display: flex;
+    text-align: center;
+    width: 50px;
+    height: 50px;
     border-radius: 100%;
+    margine-bottom: 40;
 `;
 
 export const Menu = styled.div`

@@ -30,7 +30,7 @@ const Snb = () => {
     <Side>
       {/* //프로필 모양 나타내고싶음 */}
       <Profile>
-        <img src = "assets/profile.png"></img>
+        <img src = "assets/profile.png" width={"20px"} ></img>
       </Profile>
       <List disablePadding dense>
         <ListItem button>

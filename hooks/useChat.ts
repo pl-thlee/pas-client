@@ -5,7 +5,7 @@ import { DefaultEventsMap } from "socket.io-client/build/typed-events";
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage"; // Name of the event
 const SOCKET_SERVER_URL = "http://localhost:4000";
 
-const useChat = (roomID:any) => {
+const useChat = (roomID:string) => {
   const [messages, setMessages] = useState<string[]>([]); // Sent and received messages
   const socketRef = useRef<any | null>(null);
 
@@ -34,12 +34,13 @@ const useChat = (roomID:any) => {
 
   // Sends a message to the server that
   // forwards it to all users in the same room
-  const sendMessage = (messageBody:any) => {
+  const sendMessage = (messageBody:string) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
-      // senderId: socketRef.current.id,
+      senderId: socketRef.current.id,
       // 함부로 가져온 거 쓰지말자.. id 속성값이 없다.
     });
+    body: messageBody
   };
 
   return { messages, sendMessage };
