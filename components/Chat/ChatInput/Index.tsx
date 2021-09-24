@@ -30,6 +30,7 @@ const ChatInput: React.SFC<RouteComponentProps<MatchParams>> = ({match}) => {
       e.preventDefault();
       setNewMessage('');
       sendMessage(newMessage);
+      //sendMessage(newMessage);
       console.log("NewMessage", newMessage);
     }
   },[newMessage]);

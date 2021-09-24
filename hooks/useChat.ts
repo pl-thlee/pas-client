@@ -34,7 +34,7 @@ const useChat = (roomID:string) => {
 
   // Sends a message to the server that
   // forwards it to all users in the same room
-  const sendMessage = (messageBody:String) => {
+  const sendMessage = (messageBody:string) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
       //senderId: socketRef.current.id,
