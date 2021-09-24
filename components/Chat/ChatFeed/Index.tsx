@@ -8,12 +8,14 @@ interface MatchParams {
   roomID: string;
 }
 
-interface messageItem {
+interface message {
   [index: number]: number | string;
+  body : String[];
   message: String;
   // id: string;
 }
 
+//let message: { body: String[]};
 // function Map(message: messageItem){
 //   return message.body;
 // }
@@ -27,21 +29,11 @@ const ChatFeed: React.SFC<RouteComponentProps<MatchParams>> = ({match}) => {
       <MessagesContainer>
         <MessagesList>
 
-            {messages.map((function name(message:String, i:number) {
-
-              <MessagesItem>
-                {message[i]}
-              </MessagesItem>
-            console.log(message); }
-            )
-            )
-            }
-              
-        {/* <MessagesList>
-          {messages.map((message, i) => (
+          {messages.map((message: String, i: number, body: message["body"]) => (
             <MessagesItem key={i}>
-              {message.body}
-            </MessagesItem>))} */}
+              {body[i]}
+            </MessagesItem>))}
+
         </MessagesList>
       </MessagesContainer>
     </div>

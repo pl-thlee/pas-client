@@ -6,7 +6,7 @@ const NEW_CHAT_MESSAGE_EVENT = "message"; // Name of the event
 const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const useChat = (roomID:string) => {
-  const [messages, setMessages] = useState<string[]>([]); // Sent and received messages
+  const [messages, setMessages] = useState<String[]>([]); // Sent and received messages
   const socketRef = useRef<any | null>(null);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const useChat = (roomID:string) => {
     });
     
     // Listens for incoming messages
-    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message:any) => {
+    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message:String) => {
       const incomingMessage = {
         ...message,
         //ownedByCurrentUser: message.senderId === socketRef.current.id,
@@ -34,7 +34,7 @@ const useChat = (roomID:string) => {
 
   // Sends a message to the server that
   // forwards it to all users in the same room
-  const sendMessage = (messageBody:string) => {
+  const sendMessage = (messageBody:String) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
       //senderId: socketRef.current.id,
@@ -42,6 +42,7 @@ const useChat = (roomID:string) => {
     });
     console.log("messageBody : ", messageBody);
   };
+  //console.log("test : ", sendMessage);
 
   return {messages, sendMessage };
 };
