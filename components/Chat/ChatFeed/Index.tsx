@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessagesContainer, MessagesList, MessagesItem, MyMessage, ReceivedMessage } from '@components/Chat/ChatFeed/styles';
+import { MessagesContainer, MessagesList, MessagesItem } from '@components/Chat/ChatFeed/styles';
 import useChat from '@hooks/useChat';
 import { RouteComponentProps, withRouter } from 'react-router';
 import ChatInput from '@components/Chat/ChatInput/Index';
@@ -14,6 +14,10 @@ interface messageItem {
   // id: string;
 }
 
+// function Map(message: messageItem){
+//   return message.body;
+// }
+
 const ChatFeed: React.SFC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const { roomID } = match.params;
   const { messages } = useChat(roomID); // Creates a websocket and manages messaging
@@ -23,9 +27,7 @@ const ChatFeed: React.SFC<RouteComponentProps<MatchParams>> = ({ match }) => {
       <MessagesContainer>
         <MessagesList>
           {messages.map((message, i: number) => (
-            <MessagesItem
-              {...message.ownedByCurrentUser ? <MyMessage />: <ReceivedMessage/>}
-            >
+            <MessagesItem key={i}>
               {message.body}
             </MessagesItem>
           ))
