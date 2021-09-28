@@ -12,7 +12,7 @@ interface MatchParams {
   roomID: string;
 }
 
-const ChatInput: React.SFC<RouteComponentProps<MatchParams>> = ({match}) => {
+const ChatInput: React.SFC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const { roomID } = match.params;
   const { sendMessage } = useChat(roomID);
   const [newMessage, setNewMessage] = useState(''); // Message to be sent
@@ -25,34 +25,36 @@ const ChatInput: React.SFC<RouteComponentProps<MatchParams>> = ({match}) => {
     [newMessage],
   );
 
-  const handleSendMessage = useCallback((e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      setNewMessage('');
-      sendMessage(newMessage);
-      //sendMessage(newMessage);
-      console.log("handleSendMessage", newMessage);
-    }
-  },[newMessage]);
+  const handleSendMessage = useCallback(
+    (e: KeyboardEvent<HTMLTextAreaElement>) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        setNewMessage('');
+        console.log('handleSendMessage', newMessage);
+        sendMessage(newMessage);
+        //sendMessage(newMessage);
+      }
+    },
+    [newMessage],
+  );
 
   return (
-      <MessageBox>
-        <ChatArea
-          placeholder="메시지를 입력하세요"
-          onChange={handleNewMessageChange}
-          value={newMessage}
-          onKeyPress={handleSendMessage}
-        />
-        <ChatToolbar>
-          <IconContext.Provider value={{ size: '1.5rem', color: 'black' /* attr: { display: 'block' } */ }}>
-            <GrEmoji />
-            {/* <button onClick={handleSendMessage} > */}
-              <BiSend />
-            {/* </button>  */}
-          </IconContext.Provider>
-        </ChatToolbar>
-      </MessageBox>
-
+    <MessageBox>
+      <ChatArea
+        placeholder="메시지를 입력하세요"
+        onChange={handleNewMessageChange}
+        value={newMessage}
+        onKeyPress={handleSendMessage}
+      />
+      <ChatToolbar>
+        <IconContext.Provider value={{ size: '1.5rem', color: 'black' /* attr: { display: 'block' } */ }}>
+          <GrEmoji />
+          {/* <button onClick={handleSendMessage} > */}
+          <BiSend />
+          {/* </button>  */}
+        </IconContext.Provider>
+      </ChatToolbar>
+    </MessageBox>
   );
 };
 
