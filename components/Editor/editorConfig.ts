@@ -3,7 +3,7 @@ import { EditorConfiguration } from 'codemirror';
 
 export const editorConfig: EditorConfiguration = {
   mode: languageMapper('tsx'),
-  theme: 'darcula',
+  theme: 'default',
   smartIndent: true,
   tabSize: 4,
   indentWithTabs: false,
