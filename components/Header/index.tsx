@@ -13,17 +13,13 @@ const Header = () => {
   const token = localStorage.getItem('user');
   const currentUserId = jwtDecode<IToken>(token!).userId;
 
-  const loginBtn = {};
-  const logoutBtn = {};
   return (
     <>
       <HeaderWrapper>
         <Wrapper>
           <div className="logo">NeoPAS (Programming Assistant System)</div>
           <div className="right">
-            <Redirect to="/login">
-              <ProfileImg src={gravatar.url(currentUserId, { size: '28px', default: 'retro' })} />
-            </Redirect>
+            <ProfileImg src={gravatar.url(currentUserId, { size: '28px', default: 'retro' })} />
           </div>
         </Wrapper>
       </HeaderWrapper>

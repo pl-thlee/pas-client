@@ -1,40 +1,33 @@
 import React, { useState } from "react";
 //동작용
-import { Link, NavLink } from "react-router-dom";
 import { Side, Menu } from './styles';
-import { AiOutlineSetting } from 'react-icons/ai';
+
 //icons
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from "@material-ui/core/ListItemText";
+import { IconContext } from "react-icons";
 
 const Snb = () => {
-  const menus = [
-    { title: 'Home', path: '/'
-      // icon: <AiOutlineSetting/>,
-    },
-    { title: 'Setting', path: '/'
-    // icon: <AiOutlineSetting/>,
+  const [currentTab, setCurrentTab] = useState(0);
 
-    },
-    { title: 'File', path: '/'
-    // icon: <AiOutlineSetting/>,
-  },
+  const menuArr = [
+    { name: 'Description', content: 'Description' },
+    { name: 'Editor', content: 'Editor' },
   ];
-
   return(
     <Side>
-      <List disablePadding dense>
+      <IconContext.Provider value={{color: "#ffff"}}/>
+
         <ListItem button>
-          <ListItemText>Home</ListItemText>
+          <ListItemText style={{color:"#ffff"}}>Descript</ListItemText>
         </ListItem>
         <ListItem button>
-          <ListItemText>Setting</ListItemText>
+          <ListItemText style={{color:"#ffff"}} >Editor</ListItemText>
         </ListItem>
         <ListItem button>
-          <ListItemText>File</ListItemText>
+          <ListItemText style={{color:"#ffff"}} >Setting</ListItemText>
         </ListItem>
-      </List>
     </Side>
   );
 };
