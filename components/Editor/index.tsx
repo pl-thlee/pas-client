@@ -9,7 +9,7 @@ import './remote-caret.css';
 import randomColor from 'randomcolor';
 import jwtDecode from 'jwt-decode';
 
-interface IToken {
+export interface IToken {
   userId: string;
   iat: number;
   exp: number;
