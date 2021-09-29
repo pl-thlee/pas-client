@@ -20,13 +20,13 @@ const Snb = () => {
       <IconContext.Provider value={{color: "#ffff"}}/>
 
         <ListItem button>
-          <ListItemText>Home</ListItemText>
+          <ListItemText style={{color:"#ffff"}}>Descript</ListItemText>
         </ListItem>
         <ListItem button>
-          <ListItemText>Setting</ListItemText>
+          <ListItemText style={{color:"#ffff"}} >Editor</ListItemText>
         </ListItem>
         <ListItem button>
-          <ListItemText>File</ListItemText>
+          <ListItemText style={{color:"#ffff"}} >Setting</ListItemText>
         </ListItem>
     </Side>
   );

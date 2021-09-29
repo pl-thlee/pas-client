@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router';
 import { HeaderWrapper, Spacer, Wrapper } from './styles';
 
 // interface Props {
@@ -7,17 +6,13 @@ import { HeaderWrapper, Spacer, Wrapper } from './styles';
 // }
 
 const Header = () => {
-  const loginBtn = {};
-  const logoutBtn = {};
   return (
     <>
       <HeaderWrapper>
         <Wrapper>
           <div className="logo">Programming Assistant System</div>
           <div className="right">
-            <Redirect to="/login">
-              로그아웃
-            </Redirect>
+            <button>로그인</button>
           </div>
         </Wrapper>
       </HeaderWrapper>
