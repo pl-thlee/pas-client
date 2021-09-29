@@ -6,9 +6,9 @@ import Nav from '@components/Snb';
 import { Redirect } from 'react-router';
 
 const Playground = () => {
-  if (!localStorage.getItem('user')) {
-    return <Redirect to="/login" />;
-  }
+  // if (!localStorage.getItem('user')) {
+  //   return <Redirect to="/login" />;
+  // }
 
   return (
     <>
