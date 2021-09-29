@@ -12,6 +12,7 @@ export const HeaderWrapper: StyledComponent<{}> = styled.header`
 export const Wrapper = styled(Responsive)`
   height: 4rem;
   display: flex;
+  background: #292F36;
   align-items: center;
   justify-content: space-between;
 

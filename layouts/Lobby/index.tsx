@@ -1,11 +1,12 @@
-import React from 'react';
-import Chat from '@components/Chat';
+import Url from '@components/Url';
 import Editor from '@components/Editor';
 import Header from '@components/Header';
 import Nav from '@components/Snb';
+import React from 'react';
 import { Redirect } from 'react-router';
 
-const Playground = () => {
+const PlaygroundUrl = () => {
+// JWT 토큰이 있는지 확인하고
   if (!localStorage.getItem('user')) {
     return <Redirect to="/login" />;
   }
@@ -13,13 +14,11 @@ const Playground = () => {
   return (
     <>
       <Header />
-      <div style={{ display: 'flex' }}>
-        <Nav />
-        <Editor />
-        <Chat />
+      <div style={{ display: 'flex', background: '#292F36'}}>
+        <Url />
       </div>
     </>
   );
 };
 
-export default Playground;
+export default PlaygroundUrl;
