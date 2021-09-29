@@ -9,6 +9,7 @@ interface IMessage {
   [index: number]: number | string;
   body: String[];
   message: String;
+  ownedByCurrentUser: boolean;
 }
 
 const useChat = (roomID: string) => {
@@ -25,10 +26,12 @@ const useChat = (roomID: string) => {
     socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message: any) => {
       const incomingMessage = {
         ...message,
-        //ownedByCurrentUser: message.senderId === socketRef.current.id,
+        ownedByCurrentUser: message.senderId === socketRef.current.id,
       };
       setMessages((messages) => [...messages, incomingMessage]);
-    });
+      console.log('ownedByCurrentUser : ', incomingMessage.ownedByCurrentUser);
+    }
+    );
 
     // Destroys the socket reference
     // when the connection is closed
@@ -42,7 +45,7 @@ const useChat = (roomID: string) => {
   const sendMessage = (messageBody: string) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
-      //senderId: socketRef.current.id,
+      senderId: socketRef.current.id,
       // 함부로 가져온 거 쓰지말자.. id 속성값이 없다.
     });
     console.log('messageBody : ', messageBody);

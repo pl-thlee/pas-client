@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { ChatHeaderWrapper } from './styles';
 import { withRouter, RouteComponentProps } from 'react-router';
-
 interface MatchParams{
   roomID: string;
 }

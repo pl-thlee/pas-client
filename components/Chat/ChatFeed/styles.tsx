@@ -15,7 +15,6 @@ export const MessagesList = styled.ol`
 `;
 
 export const MessagesItem = styled.li`
-    width: 55%;
     margin: 8px;
     padding: 12px 8px;
     word-break: break-word;
@@ -24,12 +23,19 @@ export const MessagesItem = styled.li`
 `;
 
 export const MyMessage = styled.li`
+    width: 55%;
+    padding: 12px 8px;
+    word-break: break-word;
+    border-radius: 4px;
     background-color: rgb(0, 132, 255);
     margin-left: auto;
 `; 
 
-export const ReceivedMessage = styled.li`
+export const ReceivedMessage = styled.li` 
+    width: 55%;
+    padding: 12px 8px;
+    word-break: break-word;
+    border-radius: 4px;
     background-color: #3f4042;
-    margin-left: auto;
+    margin-right: auto;
 `; 
-//----------------------------------------

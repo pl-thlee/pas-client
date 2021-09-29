@@ -6,24 +6,15 @@ export const Side = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 10%;
+    width: 5%;
     background: #292F36;
 
     .item {
         font-size: 1.125rem;
-        color: #F7FFF7;
+        color: #ffff;
         font-weight: 400;
         letter-spacing: 2px;        
     }
-`;
-
-export const Profile = styled.div`
-    display: flex;
-    text-align: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    margine-bottom: 40;
 `;
 
 export const Menu = styled.div`
