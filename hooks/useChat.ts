@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
-import { DefaultEventsMap } from 'socket.io-client/build/typed-events';
 
 const NEW_CHAT_MESSAGE_EVENT = 'message'; // Name of the event
 const SOCKET_SERVER_URL = 'http://localhost:4000';
-const HEROKU_SERVER_URL = 'https://neopas-server.herokuapp.com';
+const HEROKU_SERVER_URL = 'http://neopas-server.herokuapp.com';
+
+const URL = process.env.NODE_ENV === 'development' ? SOCKET_SERVER_URL : HEROKU_SERVER_URL;
 
 interface IMessage {
   [index: number]: number | string;
@@ -19,7 +20,8 @@ const useChat = (roomID: string) => {
 
   useEffect(() => {
     // Creates a WebSocket connection
-    socketRef.current = socketIOClient(HEROKU_SERVER_URL, {
+    socketRef.current = socketIOClient(URL, {
+      //URL = SOCKET_SERVER_URL,
       query: { roomID },
     });
 
@@ -30,7 +32,7 @@ const useChat = (roomID: string) => {
         ownedByCurrentUser: message.senderId === socketRef.current.id,
       };
       setMessages((messages) => [...messages, incomingMessage]);
-      console.log('ownedByCurrentUser : ', incomingMessage.ownedByCurrentUser);
+      //console.log('ownedByCurrentUser : ', incomingMessage.ownedByCurrentUser);
     }
     );
 
@@ -47,9 +49,8 @@ const useChat = (roomID: string) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
       senderId: socketRef.current.id,
-      // 함부로 가져온 거 쓰지말자.. id 속성값이 없다.
     });
-    console.log('messageBody : ', messageBody);
+    //console.log('messageBody : ', messageBody);
   };
 
   return { messages, sendMessage };

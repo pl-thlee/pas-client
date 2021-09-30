@@ -3,15 +3,14 @@ import styled from "@emotion/styled";
 export const MessagesContainer = styled.div`
     flex: 1;
     min-height: 100px;
-    overflow: auto;
     border: none;
     border-radius: 7px 7px 0 0;
+    overflow-y: auto;
 `;
 
 export const MessagesList = styled.ol`
     list-style-type: none;
     padding: 0;
-
 `;
 
 export const MessagesItem = styled.li`
