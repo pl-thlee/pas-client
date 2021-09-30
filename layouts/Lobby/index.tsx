@@ -5,7 +5,7 @@ import Nav from '@components/Snb';
 import React from 'react';
 import { Redirect } from 'react-router';
 
-const PlaygroundUrl = () => {
+const Lobby = () => {
 // JWT 토큰이 있는지 확인하고
   // if (!localStorage.getItem('user')) {
   //   return <Redirect to="/login" />;
@@ -21,4 +21,4 @@ const PlaygroundUrl = () => {
   );
 };
 
-export default PlaygroundUrl;
+export default Lobby;

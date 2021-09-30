@@ -17,6 +17,7 @@ export const Wrapper = styled(Responsive)`
   justify-content: space-between;
 
   .logo {
+    color: white;
     font-size: 1.5rem;
     letter-spacing: 0.5px;
   }

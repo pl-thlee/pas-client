@@ -4,6 +4,7 @@ import { DefaultEventsMap } from 'socket.io-client/build/typed-events';
 
 const NEW_CHAT_MESSAGE_EVENT = 'message'; // Name of the event
 const SOCKET_SERVER_URL = 'http://localhost:4000';
+const HEROKU_SERVER_URL = 'https://neopas-server.herokuapp.com';
 
 interface IMessage {
   [index: number]: number | string;
@@ -18,7 +19,7 @@ const useChat = (roomID: string) => {
 
   useEffect(() => {
     // Creates a WebSocket connection
-    socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
+    socketRef.current = socketIOClient(HEROKU_SERVER_URL, {
       query: { roomID },
     });
 
