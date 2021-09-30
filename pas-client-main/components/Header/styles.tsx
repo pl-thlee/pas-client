@@ -14,8 +14,10 @@ export const Wrapper = styled(Responsive)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: #292F36;
 
   .logo {
+    color: white;
     font-size: 1.5rem;
     letter-spacing: 0.5px;
   }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
-import { editorConfig } from './editorConfig';
+import { editorConfig, editorConfig2 } from './editorConfig';
 import * as Y from 'yjs';
 import { WebrtcProvider } from 'y-webrtc';
 import { CodemirrorBinding } from 'y-codemirror';
@@ -18,6 +18,7 @@ export interface IToken {
 const Editor = () => {
   const [doc, setDoc] = useState<CodeMirror.Doc>();
   const [editor, setEditor] = useState<CodeMirror.Editor>();
+
   if (editor) {
     // setEditor(undefined);
     // editor.refresh();
@@ -80,7 +81,7 @@ const Editor = () => {
     >
       <CodeMirror
         // value={code}
-        options={editorConfig}
+        options={editorConfig2}
         editorDidMount={(editor) => {
           setEditor(editor);
         }}

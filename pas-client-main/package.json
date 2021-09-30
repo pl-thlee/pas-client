@@ -45,6 +45,7 @@
     "@types/node": "^16.7.1",
     "@types/react-router": "^5.1.16",
     "@types/react-router-dom": "^5.1.8",
+    "@types/styled-components": "^5.1.14",
     "@types/webpack": "^5.28.0",
     "@types/webpack-dev-server": "^3.11.5",
     "babel-loader": "^8.2.2",

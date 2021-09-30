@@ -4,6 +4,12 @@ import { DiCodeBadge } from 'react-icons/di';
 import { GiExitDoor } from 'react-icons/gi';
 import { IconContext } from 'react-icons/lib';
 
+const tabContArr= [
+  {
+    tabTitle: ""
+  }
+];
+
 const Snb = () => {
   return (
     <IconContext.Provider value={{ size: '2rem', color: 'white' /* attr: { display: 'block' } */ }}>
